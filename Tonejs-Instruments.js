@@ -6,6 +6,7 @@
 */
 import Tone from "tone"
 
+module.exports.TonejsInstruments = () => SampleLibrary
 
 var SampleLibrary = {
   minify: false,
@@ -647,4 +648,4 @@ var SampleLibrary = {
 
 }
 
-exports.TonejsInstruments = () => SampleLibrary
+
