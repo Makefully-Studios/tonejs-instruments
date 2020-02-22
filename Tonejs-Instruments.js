@@ -4,7 +4,8 @@
 * @author N.P. Brosowsky (nbrosowsky@gmail.com)
 * https://github.com/nbrosowsky/tonejs-instruments
 */
-import Tone from "tone"
+
+const tone = require('tone')
 
 module.exports = () => SampleLibrary
 
