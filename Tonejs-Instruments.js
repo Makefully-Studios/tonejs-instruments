@@ -6,7 +6,7 @@
 */
 import Tone from "tone"
 
-module.exports.TonejsInstruments = () => SampleLibrary
+module.exports = () => SampleLibrary
 
 var SampleLibrary = {
   minify: false,
