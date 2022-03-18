@@ -1,22 +1,22 @@
 {
   "name": "tonejs-instruments",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "npmifiy the forked tonejs-instruments",
   "main": "Tonejs-Instruments.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "tone": "^13.8.25"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/orlando-signer/tonejs-instruments.git"
+    "url": "git+https://github.com/Makefully-Studios/tonejs-instruments.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/orlando-signer/tonejs-instruments/issues"
+    "url": "https://github.com/Makefully-Studios/tonejs-instruments/issues"
   },
-  "homepage": "https://github.com/orlando-signer/tonejs-instruments#readme"
+  "homepage": "https://github.com/Makefully-Studios/tonejs-instruments#readme"
 }
