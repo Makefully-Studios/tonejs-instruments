@@ -5,7 +5,7 @@
 * https://github.com/nbrosowsky/tonejs-instruments
 */
 
-const tone = require('tone')
+const Tone = require('tone')
 
 module.exports = () => SampleLibrary
 
