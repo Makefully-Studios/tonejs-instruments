@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "tone": "^13.8.25"
+    "tone": "^14.7.77"
   },
   "repository": {
     "type": "git",
