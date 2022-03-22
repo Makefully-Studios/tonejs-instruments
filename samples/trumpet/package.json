@@ -1,11 +1,8 @@
 {
-  "name": "tonejs-instruments",
+  "name": "tonejs-instrument-trumpet",
   "version": "1.0.0",
-  "description": "NPM packages for all tonejs-instruments.",
+  "description": "NPM package for all tonejs-instruments trumpet samples.",
   "main": "index.js",
-  "scripts": {
-    "build:packages": "node build-packages.js"
-  },
   "peerDependencies": {
     "tone": "^14.7.77"
   },

@@ -1,0 +1,45 @@
+import Tone from 'tone';
+
+// Audio Files
+import A0 from './A0.wav';
+import A2 from './A2.wav';
+import C1 from './C1.wav';
+import C3 from './C3.wav';
+import D2 from './D2.wav';
+import D4 from './D4.wav';
+import Ds1 from './Ds1.wav';
+import F2 from './F2.wav';
+import F4 from './F4.wav';
+import G1 from './G1.wav';
+
+const
+  AUDIO = {
+    "A0": A0,
+    "A2": A2,
+    "C1": C1,
+    "C3": C3,
+    "D2": D2,
+    "D4": D4,
+    "D#1": Ds1,
+    "F2": F2,
+    "F4": F4,
+    "G1": G1
+  },
+  AUDIO_MIN = {
+    "A0": A0,
+    "A2": A2,
+    "C1": C1,
+    "C3": C3,
+    "D2": D2,
+    "D4": D4,
+    "D#1": Ds1,
+    "F2": F2,
+    "F4": F4,
+    "G1": G1
+  };
+
+export default class InstrumentFrenchHornWav extends Tone.Sampler {
+  constructor (onload, minify = false) {
+    super(minify ? AUDIO_MIN : AUDIO, '', onload);
+  }
+}
