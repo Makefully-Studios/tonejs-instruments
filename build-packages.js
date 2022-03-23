@@ -53,6 +53,7 @@ const
     allInstruments = [];
 
 delete pkg.scripts;
+delete pkg.devDependencies;
 
 fs.readdirSync('samples').forEach((folder) => {
     const
