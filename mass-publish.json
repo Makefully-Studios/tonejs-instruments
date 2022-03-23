@@ -1,8 +1,1 @@
-{
-    "packages": [
-        "samples/bass-electric/"
-    ],
-    "ignoreExtension": [],
-    "commitMessage": "chore: release new versions",
-    "commitFrom": "bdb2a76df74a874e370fe3dcc2ad63b2118c24ec"
-}
+{"packages":["samples/bass-electric/"],"ignoreExtension":[],"commitMessage":"chore: release new versions","commitFrom":"b507f7d67a6c3b768626e6eeba210336266c44ab"}
