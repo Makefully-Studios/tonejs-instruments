@@ -1,1 +1,8 @@
-{"packages":["samples/"],"ignoreExtension":[],"commitMessage":"chore: release new versions","commitFrom":"68f9eff73fab66da18a214fd9244acfd8f33a366"}
+{
+    "packages": [
+        "samples/"
+    ],
+    "ignoreExtension": [],
+    "commitMessage": "chore: release new versions",
+    "commitFrom": "bdb2a76df74a874e370fe3dcc2ad63b2118c24ec"
+}
