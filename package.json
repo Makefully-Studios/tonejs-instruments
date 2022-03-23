@@ -4,7 +4,8 @@
   "description": "NPM packages for all tonejs-instruments.",
   "main": "index.js",
   "scripts": {
-    "build:packages": "node build-packages.js"
+    "build:packages": "node build-packages.js",
+    "publish": "mass-publish publish patch"
   },
   "peerDependencies": {
     "tone": "^14.7.77"
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Makefully-Studios/tonejs-instruments/issues"
   },
-  "homepage": "https://github.com/Makefully-Studios/tonejs-instruments#readme"
+  "homepage": "https://github.com/Makefully-Studios/tonejs-instruments#readme",
+  "devDependencies": {
+    "mass-publish": "^1.1.0"
+  }
 }
