@@ -1,6 +1,8 @@
 const
     fs = require("fs"),
     pkg = JSON.parse(fs.readFileSync('./package.json')),
+    massPublish = JSON.parse(fs.readFileSync('./mass-publish.json')),
+    publishList = massPublish.packages,
     template = new String(fs.readFileSync('./templates/tonejs-instruments.js')),
     templateTypes = new String(fs.readFileSync('./templates/tonejs-instrument-types.js')),
     templateReadme = new String(fs.readFileSync('./templates/README.md')),
@@ -64,7 +66,7 @@ fs.readdirSync('samples').forEach((folder) => {
     allInstruments.push(folder);
     pkg.name = `tonejs-instrument-${folder}`;
     pkg.description = `NPM package for all tonejs-instruments ${folder} samples.`;
-    fs.writeFileSync(`${instrumentPath}/package.json`, JSON.stringify(pkg, null, 2));
+    fs.writeFileSync(`${instrumentPath}/package.json`, `${JSON.stringify(pkg)}\n`);
     console.log(`Create package for ${instrumentPath}/`);
     fs.readdirSync(instrumentPath).filter((file) => (file.indexOf('.') === -1)).forEach((ext) => {
         const
@@ -76,7 +78,7 @@ fs.readdirSync('samples').forEach((folder) => {
 
         pkg.name = `tonejs-instrument-${folder}-${ext}`;
         pkg.description = `NPM package for tonejs-instruments ${folder} ${ext.toUpperCase()} samples.`;
-        fs.writeFileSync(`${instrumentTypePath}/package.json`, JSON.stringify(pkg, null, 2));
+        fs.writeFileSync(`${instrumentTypePath}/package.json`, `${JSON.stringify(pkg)}\n`);
         console.log(`Create package for ${instrumentTypePath}/`);
 
         fs.readdirSync(instrumentTypePath).filter((file) => (file.indexOf('.') >= 0) && (file.indexOf('.js') === -1) && (file.indexOf('.md') === -1)).forEach((audio) => {
@@ -117,3 +119,8 @@ fs.writeFileSync('README.md', (() => {
         return `- [${instrument}](./samples/${instrument}/README.md)`;
     }).join('\n')}\n\n## To do:${readme.split('## To do:')[1]}`;
 })());
+
+// Update NPM publish list.
+publishList.length = 0;
+publishList.push('samples/', ...allInstruments.map((instrument) => `samples/${instrument}/`));
+fs.writeFileSync('mass-publish.json', `${JSON.stringify(massPublish)}\n`);
