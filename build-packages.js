@@ -1,8 +1,9 @@
 const
     fs = require("fs"),
     pkg = JSON.parse(fs.readFileSync('./package.json')),
-    template = new String(fs.readFileSync('./tonejs-instruments-template.js')),
-    templateTypes = new String(fs.readFileSync('./tonejs-instrument-types-template.js')),
+    template = new String(fs.readFileSync('./templates/tonejs-instruments.js')),
+    templateTypes = new String(fs.readFileSync('./templates/tonejs-instrument-types.js')),
+    templateReadme = new String(fs.readFileSync('./templates/README.md')),
     camelCase = (str) => {
         return str.replace(/(?:^|-)([a-z])/g, (g) => (g[1] || g[0]).toUpperCase());
     },
@@ -34,21 +35,21 @@ const
             return `    ${typeMap[type]}`;
         }).join(',\n')},`).replace(/instruments/g, `${instrument}s`);
     },
-    createRootIndex = () => {
+    updateReadme = (instrumentName, instrument, types) => {
         const
-            instruments = {};
+            typeMap = {};
+        let readme = templateReadme;
 
-        allInstruments.forEach((instrument) => {
-            instruments[instrument] = camelCase(instrument);
-        });
+        if (types) {
+            types.forEach((type) => {
+                typeMap[type] = camelCase(`${instrument}-${type}`);
+            });
+            readme = readme.replace("## Basic Usage", `This instrument can be instantiated using various audio formats:\n${types.map((type) => {
+                return `- [${typeMap[type]}](./${type}/README.md)`;
+            }).join('\n')}\n\n## Basic Usage`).replace("import INSTRUMENT_NAME", `import {${types.map((type) => typeMap[type]).join(', ')}}`).replace(/INSTRUMENT_NAME\(/g, `${typeMap[types[0]]}(`);
+        }
 
-        return templateTypes.replace('// Instrument types', `// Instruments\n${allInstruments.map((instrument) => {
-            return `import ${instruments[instrument]} from './samples/${instrument}/index.js';`;
-        }).join('\n')}`).replace('typeMap = {}', `instrumentMap = {\n${allInstruments.map((instrument) => {
-            return `    '${instrument}': ${instruments[instrument]}`;
-        }).join(',\n')}\n  }`).replace('instruments = {', `instruments = {\n${allInstruments.map((instrument) => {
-            return `    ${instruments[instrument]}`;
-        }).join(',\n')},`).replace(/typeMap/g, `instrumentMap`);
+        return readme.replace(/INSTRUMENT_NAME/g, instrumentName).replace(/INSTRUMENT/g, instrument);
     },
     allInstruments = [];
 
@@ -78,7 +79,7 @@ fs.readdirSync('samples').forEach((folder) => {
         fs.writeFileSync(`${instrumentTypePath}/package.json`, JSON.stringify(pkg, null, 2));
         console.log(`Create package for ${instrumentTypePath}/`);
 
-        fs.readdirSync(instrumentTypePath).filter((file) => (file.indexOf('.') >= 0) && (file.indexOf('.js') === -1)).forEach((audio) => {
+        fs.readdirSync(instrumentTypePath).filter((file) => (file.indexOf('.') >= 0) && (file.indexOf('.js') === -1) && (file.indexOf('.md') === -1)).forEach((audio) => {
             thisExts.push({
                 id: audio.split('.')[0],
                 path: `./${audio}`
@@ -86,12 +87,33 @@ fs.readdirSync('samples').forEach((folder) => {
         });
 
         fs.writeFileSync(`${instrumentTypePath}/index.js`, updateTemplate(thisExts, instrumentName));
-        //if (!fs.existsSync(`samples/${folder}/${ext}`)){
-        //    fs.mkdirSync(`samples/${folder}/${ext}`);
-        //}
-        //fs.renameSync(`samples/${folder}/${file}`, `samples/${folder}/${ext}/${file}`);
+        fs.writeFileSync(`${instrumentTypePath}/README.md`, updateReadme(instrumentName, `${folder}-${ext}`));
     });
     fs.writeFileSync(`${instrumentPath}/index.js`, updateTypesTemplate(camelCase(folder), types));
+    fs.writeFileSync(`${instrumentPath}/README.md`, updateReadme(camelCase(folder), folder, types));
 });
 
-fs.writeFileSync(`index.js`, createRootIndex());
+fs.writeFileSync('index.js', (() => {
+    const
+        instruments = {};
+
+    allInstruments.forEach((instrument) => {
+        instruments[instrument] = camelCase(instrument);
+    });
+
+    return templateTypes.replace('// Instrument types', `// Instruments\n${allInstruments.map((instrument) => {
+        return `import ${instruments[instrument]} from './samples/${instrument}/index.js';`;
+    }).join('\n')}`).replace('typeMap = {}', `instrumentMap = {\n${allInstruments.map((instrument) => {
+        return `    '${instrument}': ${instruments[instrument]}`;
+    }).join(',\n')}\n  }`).replace('instruments = {', `instruments = {\n${allInstruments.map((instrument) => {
+        return `    ${instruments[instrument]}`;
+    }).join(',\n')},`).replace(/typeMap/g, `instrumentMap`);
+})());
+fs.writeFileSync('README.md', (() => {
+    const
+        readme = new String(fs.readFileSync('./README.md'));
+
+    return `${readme.split('Included instruments:')[0]}Included instruments:\n${allInstruments.map((instrument) => {
+        return `- [${instrument}](./samples/${instrument}/README.md)`;
+    }).join('\n')}\n\n## To do:${readme.split('## To do:')[1]}`;
+})());
