@@ -1,4 +1,4 @@
-import Tone from 'tone';
+import {Sampler} from 'tone';
 
 // Audio Files
 import As0 from './As0.ogg';
@@ -35,8 +35,11 @@ const
     "F2": F2
   };
 
-export default class InstrumentTubaOgg extends Tone.Sampler {
-  constructor (onload, minify = false) {
-    super(minify ? AUDIO_MIN : AUDIO, '', onload);
+export default class InstrumentTubaOgg extends Sampler {
+  constructor (options, minify = false) {
+    super({
+      urls: minify ? AUDIO_MIN : AUDIO,
+      onload: options.onload
+    });
   }
 }

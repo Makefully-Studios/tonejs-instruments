@@ -1,4 +1,4 @@
-import Tone from 'tone';
+import {Sampler} from 'tone';
 
 // Audio Files
 import C4 from './C4.ogg';
@@ -32,8 +32,11 @@ const
     "G6": G6
   };
 
-export default class InstrumentXylophoneOgg extends Tone.Sampler {
-  constructor (onload, minify = false) {
-    super(minify ? AUDIO_MIN : AUDIO, '', onload);
+export default class InstrumentXylophoneOgg extends Sampler {
+  constructor (options, minify = false) {
+    super({
+      urls: minify ? AUDIO_MIN : AUDIO,
+      onload: options.onload
+    });
   }
 }

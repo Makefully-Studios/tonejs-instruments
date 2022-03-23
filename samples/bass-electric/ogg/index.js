@@ -1,4 +1,4 @@
-import Tone from 'tone';
+import {Sampler} from 'tone';
 
 // Audio Files
 import As2 from './As2.ogg';
@@ -51,8 +51,11 @@ const
     "G5": G5
   };
 
-export default class InstrumentBassElectricOgg extends Tone.Sampler {
-  constructor (onload, minify = false) {
-    super(minify ? AUDIO_MIN : AUDIO, '', onload);
+export default class InstrumentBassElectricOgg extends Sampler {
+  constructor (options, minify = false) {
+    super({
+      urls: minify ? AUDIO_MIN : AUDIO,
+      onload: options.onload
+    });
   }
 }

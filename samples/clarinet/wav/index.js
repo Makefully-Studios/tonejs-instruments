@@ -1,4 +1,4 @@
-import Tone from 'tone';
+import {Sampler} from 'tone';
 
 // Audio Files
 import As2 from './As2.wav';
@@ -41,8 +41,11 @@ const
     "F#5": Fs5
   };
 
-export default class InstrumentClarinetWav extends Tone.Sampler {
-  constructor (onload, minify = false) {
-    super(minify ? AUDIO_MIN : AUDIO, '', onload);
+export default class InstrumentClarinetWav extends Sampler {
+  constructor (options, minify = false) {
+    super({
+      urls: minify ? AUDIO_MIN : AUDIO,
+      onload: options.onload
+    });
   }
 }

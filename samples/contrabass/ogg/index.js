@@ -1,4 +1,4 @@
-import Tone from 'tone';
+import {Sampler} from 'tone';
 
 // Audio Files
 import A1 from './A1.ogg';
@@ -47,8 +47,11 @@ const
     "G#2": Gs2
   };
 
-export default class InstrumentContrabassOgg extends Tone.Sampler {
-  constructor (onload, minify = false) {
-    super(minify ? AUDIO_MIN : AUDIO, '', onload);
+export default class InstrumentContrabassOgg extends Sampler {
+  constructor (options, minify = false) {
+    super({
+      urls: minify ? AUDIO_MIN : AUDIO,
+      onload: options.onload
+    });
   }
 }
