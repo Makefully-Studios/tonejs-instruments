@@ -188,9 +188,9 @@ const
   };
 
 export default class InstrumentPianoOgg extends Sampler {
-  constructor (options, minify = false) {
+  constructor (options = {}) {
     super({
-      urls: minify ? AUDIO_MIN : AUDIO,
+      urls: options.minify ? AUDIO_MIN : AUDIO,
       onload: options.onload
     });
   }

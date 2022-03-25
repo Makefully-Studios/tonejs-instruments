@@ -1,6 +1,6 @@
 {
   "name": "tonejs-instruments",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NPM packages for all tonejs-instruments.",
   "main": "index.js",
   "scripts": {

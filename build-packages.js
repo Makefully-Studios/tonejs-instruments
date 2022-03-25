@@ -1,13 +1,36 @@
 const
     fs = require("fs"),
-    pkg = JSON.parse(fs.readFileSync('./package.json')),
-    massPublish = JSON.parse(fs.readFileSync('./mass-publish.json')),
+    getJSONSync = (path) => {
+        try {
+            return JSON.parse(fs.readFileSync(path));
+        } catch (e) {
+            return null;
+        }
+    },
+    pkg = getJSONSync('./package.json'),
+    version = pkg.version,
+    massPublish = getJSONSync('./mass-publish.json'),
     publishList = massPublish.packages,
     template = new String(fs.readFileSync('./templates/tonejs-instruments.js')),
     templateTypes = new String(fs.readFileSync('./templates/tonejs-instrument-types.js')),
     templateReadme = new String(fs.readFileSync('./templates/README.md')),
     camelCase = (str) => {
         return str.replace(/(?:^|-)([a-z])/g, (g) => (g[1] || g[0]).toUpperCase());
+    },
+    getLatestVersion = (version1 = '0.0.0', version2 = '0.0.0') => {
+        const
+            v1 = version1.split('.'),
+            v2 = version2.split('.');
+
+        for (let i = 0; i < 3; i++) {
+            if (+v1[i] > +v2[i]) {
+                return version1;
+            } else if (+v2[i] > +v1[i]) {
+                return version2;
+            }
+        }
+
+        return version1;
     },
     updateTemplate = (files, instrument) => {
         const
@@ -66,6 +89,7 @@ fs.readdirSync('samples').forEach((folder) => {
     allInstruments.push(folder);
     pkg.name = `tonejs-instrument-${folder}`;
     pkg.description = `NPM package for all tonejs-instruments ${folder} samples.`;
+    pkg.version = getLatestVersion(version, getJSONSync(`${instrumentPath}/package.json`)?.version);
     fs.writeFileSync(`${instrumentPath}/package.json`, `${JSON.stringify(pkg)}\n`);
     console.log(`Create package for ${instrumentPath}/`);
     fs.readdirSync(instrumentPath).filter((file) => (file.indexOf('.') === -1)).forEach((ext) => {
@@ -78,6 +102,7 @@ fs.readdirSync('samples').forEach((folder) => {
 
         pkg.name = `tonejs-instrument-${folder}-${ext}`;
         pkg.description = `NPM package for tonejs-instruments ${folder} ${ext.toUpperCase()} samples.`;
+        pkg.version = getLatestVersion(version, getJSONSync(`${instrumentTypePath}/package.json`)?.version);
         fs.writeFileSync(`${instrumentTypePath}/package.json`, `${JSON.stringify(pkg)}\n`);
         console.log(`Create package for ${instrumentTypePath}/`);
 
