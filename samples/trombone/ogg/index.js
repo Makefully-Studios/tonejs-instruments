@@ -1,54 +1,54 @@
 import {Sampler} from 'tone';
 
 // Audio Files
-import As0 from './As0.ogg';
 import As1 from './As1.ogg';
 import As2 from './As2.ogg';
-import C2 from './C2.ogg';
+import As3 from './As3.ogg';
 import C3 from './C3.ogg';
-import Cs1 from './Cs1.ogg';
-import Cs3 from './Cs3.ogg';
-import D2 from './D2.ogg';
+import C4 from './C4.ogg';
+import Cs2 from './Cs2.ogg';
+import Cs4 from './Cs4.ogg';
 import D3 from './D3.ogg';
-import Ds1 from './Ds1.ogg';
+import D4 from './D4.ogg';
 import Ds2 from './Ds2.ogg';
 import Ds3 from './Ds3.ogg';
-import F1 from './F1.ogg';
+import Ds4 from './Ds4.ogg';
 import F2 from './F2.ogg';
 import F3 from './F3.ogg';
-import Gs1 from './Gs1.ogg';
+import F4 from './F4.ogg';
 import Gs2 from './Gs2.ogg';
+import Gs3 from './Gs3.ogg';
 
 const
   AUDIO = {
-    "A#0": As0,
     "A#1": As1,
     "A#2": As2,
-    "C2": C2,
+    "A#3": As3,
     "C3": C3,
-    "C#1": Cs1,
-    "C#3": Cs3,
-    "D2": D2,
+    "C4": C4,
+    "C#2": Cs2,
+    "C#4": Cs4,
     "D3": D3,
-    "D#1": Ds1,
+    "D4": D4,
     "D#2": Ds2,
     "D#3": Ds3,
-    "F1": F1,
+    "D#4": Ds4,
     "F2": F2,
     "F3": F3,
-    "G#1": Gs1,
-    "G#2": Gs2
+    "F4": F4,
+    "G#2": Gs2,
+    "G#3": Gs3
   },
   AUDIO_MIN = {
-    "A#0": As0,
-    "A#2": As2,
-    "C3": C3,
-    "C#3": Cs3,
-    "D3": D3,
-    "D#2": Ds2,
-    "F1": F1,
-    "F3": F3,
-    "G#2": Gs2
+    "A#1": As1,
+    "A#3": As3,
+    "C4": C4,
+    "C#4": Cs4,
+    "D4": D4,
+    "D#3": Ds3,
+    "F2": F2,
+    "F4": F4,
+    "G#3": Gs3
   };
 
 export default class InstrumentTromboneOgg extends Sampler {
