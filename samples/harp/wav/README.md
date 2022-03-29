@@ -2,6 +2,8 @@
 
 HarpWav extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Harp](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-harp-wav`. Once installed, you can include HarpWav as an import as shown:

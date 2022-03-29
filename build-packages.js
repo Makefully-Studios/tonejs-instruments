@@ -72,6 +72,8 @@ const
             readme = readme.replace("## Basic Usage", `This instrument can be instantiated using various audio formats:\n${types.map((type) => {
                 return `- [${typeMap[type]}](./${type}/README.md)`;
             }).join('\n')}\n\n## Basic Usage`).replace("import INSTRUMENT_NAME", `import {${types.map((type) => typeMap[type]).join(', ')}}`).replace(/INSTRUMENT_NAME\(/g, `${typeMap[types[0]]}(`);
+        } else {
+            readme = readme.replace("## Basic Usage", `For all audio formats, check out [${instrumentName.substring(0, instrumentName.length - 3)}](../README.md).\n\n## Basic Usage`);
         }
 
         return readme.replace(/INSTRUMENT_NAME/g, instrumentName).replace(/INSTRUMENT/g, instrument);

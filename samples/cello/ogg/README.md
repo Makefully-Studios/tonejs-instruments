@@ -2,6 +2,8 @@
 
 CelloOgg extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Cello](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-cello-ogg`. Once installed, you can include CelloOgg as an import as shown:

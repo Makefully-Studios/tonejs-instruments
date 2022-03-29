@@ -2,6 +2,8 @@
 
 TromboneOgg extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Trombone](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-trombone-ogg`. Once installed, you can include TromboneOgg as an import as shown:

@@ -2,6 +2,8 @@
 
 GuitarElectricOgg extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [GuitarElectric](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-guitar-electric-ogg`. Once installed, you can include GuitarElectricOgg as an import as shown:

@@ -2,6 +2,8 @@
 
 FluteWav extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Flute](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-flute-wav`. Once installed, you can include FluteWav as an import as shown:

@@ -2,6 +2,8 @@
 
 CelloWav extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Cello](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-cello-wav`. Once installed, you can include CelloWav as an import as shown:

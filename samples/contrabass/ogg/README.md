@@ -2,6 +2,8 @@
 
 ContrabassOgg extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Contrabass](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-contrabass-ogg`. Once installed, you can include ContrabassOgg as an import as shown:

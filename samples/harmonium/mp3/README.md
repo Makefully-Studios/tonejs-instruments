@@ -2,6 +2,8 @@
 
 HarmoniumMp3 extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Harmonium](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-harmonium-mp3`. Once installed, you can include HarmoniumMp3 as an import as shown:

@@ -2,6 +2,8 @@
 
 FluteMp3 extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Flute](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-flute-mp3`. Once installed, you can include FluteMp3 as an import as shown:

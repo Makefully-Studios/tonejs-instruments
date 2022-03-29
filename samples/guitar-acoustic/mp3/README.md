@@ -2,6 +2,8 @@
 
 GuitarAcousticMp3 extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [GuitarAcoustic](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-guitar-acoustic-mp3`. Once installed, you can include GuitarAcousticMp3 as an import as shown:

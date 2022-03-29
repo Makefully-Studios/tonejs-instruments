@@ -2,6 +2,8 @@
 
 FrenchHornMp3 extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [FrenchHorn](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-french-horn-mp3`. Once installed, you can include FrenchHornMp3 as an import as shown:

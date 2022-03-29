@@ -2,6 +2,8 @@
 
 ViolinOgg extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Violin](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-violin-ogg`. Once installed, you can include ViolinOgg as an import as shown:

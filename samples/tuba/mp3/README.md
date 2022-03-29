@@ -2,6 +2,8 @@
 
 TubaMp3 extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Tuba](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-tuba-mp3`. Once installed, you can include TubaMp3 as an import as shown:

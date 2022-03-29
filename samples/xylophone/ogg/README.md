@@ -2,6 +2,8 @@
 
 XylophoneOgg extends Tone.Sampler by automatically loading the list of audio clips for each note.
 
+For all audio formats, check out [Xylophone](../README.md).
+
 ## Basic Usage
 
 Install using `npm install tonejs-instrument-xylophone-ogg`. Once installed, you can include XylophoneOgg as an import as shown:
