@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:packages": "node build-packages.js",
-    "publish": "mass-publish publish patch"
+    "publish": "mass-publish publish patch --yes"
   },
   "peerDependencies": {
     "tone": "^14.7.77"
